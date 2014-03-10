@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <!-- For those libraries not already in an offline repo defined below
+       download into this directory  -->
+  <localRepository>${env.OPENSHIFT_DATA_DIR}/maven</localRepository>
+
+  <profiles>
+
+      <!-- Configure bpms6 Maven repository -->
+      <profile>
+          <id>bpms-repository</id>
+          <repositories>
+              <repository>
+                  <id>bpms-repository</id>
+
+                  <url>file:///opt/jboss_bpm_soa/brms-6.0.0-redhat-7-maven-repository</url>
+
+                  <releases>
+                      <enabled>true</enabled>
+                  </releases>
+                  <snapshots>
+                      <enabled>false</enabled>
+                  </snapshots>
+              </repository>
+          </repositories>
+          <pluginRepositories>
+              <pluginRepository>
+                  <id>bpms-repository</id>
+
+                  <url>file:///opt/jboss_bpm_soa/brms-6.0.0-redhat-7-maven-repository</url>
+
+                  <releases>
+                      <enabled>true</enabled>
+                  </releases>
+                  <snapshots>
+                      <enabled>false</enabled>
+                  </snapshots>
+              </pluginRepository>
+          </pluginRepositories>
+      </profile>
+
+
+      <!-- JBoss Techpreview -->
+      <profile>
+          <id>redhat-techpreview-all-repository</id>
+          <repositories>
+              <repository>
+                  <id>redhat-techpreview-all-repository</id>
+                  <name>Red Hat Tech Preview repository (all)</name>
+
+                  <url>file:///opt/jboss_bpm_soa/jboss-eap-6.1.1.GA-maven-repository</url>
+
+                  <layout>default</layout>
+                  <releases>
+                      <enabled>true</enabled>
+                      <updatePolicy>never</updatePolicy>
+                  </releases>
+                  <snapshots>
+                      <enabled>false</enabled>
+                      <updatePolicy>never</updatePolicy>
+                  </snapshots>
+              </repository>
+          </repositories>
+          <pluginRepositories>
+              <pluginRepository>
+                  <id>redhat-techpreview-all-repository</id>
+                  <name>Red Hat Tech Preview repository (all)</name>
+
+                  <url>file:///opt/jboss_bpm_soa/jboss-eap-6.1.1.GA-maven-repository</url>
+
+                  <layout>default</layout>
+                  <releases>
+                      <enabled>true</enabled>
+                      <updatePolicy>never</updatePolicy>
+                  </releases>
+                  <snapshots>
+                      <enabled>false</enabled>
+                      <updatePolicy>never</updatePolicy>
+                  </snapshots>
+              </pluginRepository>
+          </pluginRepositories>
+      </profile>
+
+  </profiles>
+
+  <activeProfiles>
+      <!-- Neither of these are needed by the BPMS6 process engine at runtime
+      <activeProfile>bpms-repository</activeProfile>
+      <activeProfile>redhat-techpreview-all-repository</activeProfile -->
+  </activeProfiles>
+
+</settings>

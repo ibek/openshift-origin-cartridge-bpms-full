@@ -1,0 +1,17 @@
+---
+locked_files:
+- bin/
+- bin/*
+- conf/
+- conf/*
+- tools/
+- tools/*
+- metadata/
+- metadata/*
+- env/
+- env/OPENSHIFT_BPMS_DIR
+- env/OPENSHIFT_BPMS_LOG_DIR
+- env/OPENSHIFT_BPMS_JDK*
+- env/OPENSHIFT_BPMS_VERSION
+processed_templates:
+- '**/*.erb'

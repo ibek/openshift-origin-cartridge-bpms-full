@@ -1,0 +1,56 @@
+#!/bin/bash -eu
+
+source $OPENSHIFT_BPMS_DIR/bin/util
+
+case "$1" in
+  -v|--version)
+    version="$2"
+esac
+
+bpms_version=6.0.0.CR5
+
+echo "$version" > "$OPENSHIFT_BPMS_DIR/env/OPENSHIFT_BPMS_VERSION"
+
+# JA Bride
+echo "$bpms_version" > "$OPENSHIFT_BPMS_DIR/env/OPENSHIFT_BPMS_VERSION"
+
+ln -s ${OPENSHIFT_BPMS_DIR}/standalone/log ${OPENSHIFT_BPMS_DIR}/logs
+
+shopt -s dotglob
+cp -r ${OPENSHIFT_BPMS_DIR}/versions/${version}/template/* ${OPENSHIFT_BPMS_DIR}/template
+cp -r ${OPENSHIFT_BPMS_DIR}/versions/${version}/template/.openshift ${OPENSHIFT_BPMS_DIR}/template
+cp ${OPENSHIFT_BPMS_DIR}/standalone/configuration/standalone.xml ${OPENSHIFT_BPMS_DIR}/template/.openshift/config
+
+sed -i "s/{APP_NAME}/${OPENSHIFT_APP_NAME}/g" ${OPENSHIFT_BPMS_DIR}/template/pom.xml
+
+# Create and install the initial template WAR
+pushd $OPENSHIFT_BPMS_DIR/versions/${version}/template/src/main/webapp 1>/dev/null
+  jar cvf $OPENSHIFT_BPMS_DIR/standalone/deployments/ROOT.war ./*
+popd 1> /dev/null
+
+# JBride :  now using jboss_bpm_soa EAP
+#JBOSS_HOME=/etc/alternatives/jbosseap-$version
+JBOSS_HOME=/opt/jboss_bpm_soa/jboss-eap-6.1
+pushd $OPENSHIFT_BPMS_DIR 1> /dev/null
+  ln -s ${JBOSS_HOME}/jboss-modules.jar
+  ln -s ${JBOSS_HOME}/modules
+popd 1> /dev/null
+
+touch ${OPENSHIFT_BPMS_DIR}/env/OPENSHIFT_BPMS_CLUSTER
+touch ${OPENSHIFT_BPMS_DIR}/env/OPENSHIFT_BPMS_CLUSTER_REMOTING
+
+update-configuration java7
+
+# JA Bride
+# System property is passed to jbpm engine at start-up containing absolute path to this quartz properties file
+cp ${OPENSHIFT_BPMS_DIR}/versions/${version}/conf/quartz-ram.properties ${OPENSHIFT_DATA_DIR}
+
+# copy any project CLI files to filtered directory
+mkdir -p ${OPENSHIFT_BPMS_DIR}/filtered
+cp ${OPENSHIFT_BPMS_DIR}/versions/${version}/conf/* ${OPENSHIFT_BPMS_DIR}/filtered
+
+
+# copy custom maven settings.xml to user's $HOME directory
+sed -i -e "s@\${env.OPENSHIFT_DATA_DIR}@$OPENSHIFT_DATA_DIR@" ${OPENSHIFT_BPMS_DIR}/filtered/settings.xml
+mkdir $HOME/.m2
+cp $OPENSHIFT_BPMS_DIR/filtered/settings.xml $HOME/.m2

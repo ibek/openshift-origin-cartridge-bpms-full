@@ -1,0 +1,59 @@
+Install of RPMs
+ - The following commands are executed as root (or equivalent) on target Openshift Enterprise (OSE) 1.2 node() :
+    0)  ensure access to the internet from the OSE node
+    1)  yum install wget
+    2)  mkdir -p /opt/downloads
+
+    jboss_bpm_soa RPM
+        3)  wget http://people.redhat.com/jbride/ose/jboss_bpm_soa-6.1.1-1.el6.x86_64.rpm -P /opt/downloads
+        4)  rpm -e jboss_bpm_soa    (if RPM has been previously installed )
+        5)  rpm -ivh /opt/downloads/jboss_bpm_soa-6.1.1-1.el6.x86_64.rpm
+
+    bpms RPM
+        6)  wget http://people.redhat.com/jbride/ose/bpms-6.0.0-2.el6.x86_64.rpm -P /opt/downloads
+        7)  rpm -e bpms    (if RPM has been previously installed )
+        8)  rpm -ivh /opt/downloads/bpms-6.0.0-2.el6.x86_64.rpm
+
+    bpms_mysql RPM
+        9)  yum install mysql-server mysql-connector-java
+        10)  wget http://people.redhat.com/jbride/ose/bpms_mysql-6.0.0-1.el6.x86_64.rpm -P /opt/downloads
+        11)  rpm -e bpms_mysql    (if RPM has been previously installed)
+        12)  rpm -ivh /opt/downloads/bpms_mysql-6.0.0-1.el6.x86_64.rpm
+
+    fsw RPM
+        13) manually download Fuse Service Works (FSW) RPM (found at this link below) and place into /opt/downloads
+            - https://drive.google.com/file/d/0B6FQekq0m3C1bkJqbVZLY2d2cGc/edit?usp=sharing
+            - sorry, ran out of disk space in my people.redhat.com space
+        14) rpm -e fsw    (if RPM has been previously installed)
+        15) rpm -ivh /opt/downloads/fsw-6.0.0-2.el6.x86_64.rpm
+
+  - Verification:
+    - should see the following directory having been created:  /opt/jboss_bpm_soa/jboss-eap-6.1
+
+
+Install of BPMS cartridge
+    1)  Create an OSE 1.2 environment that supports a medium gear size
+    2)  Install OSE 1.2 rhc tools
+    3)  Delete any previous bpms6 related OSE applications that you may have previously created:
+            rhc app delete -a bpms
+
+    4)  Create the *full* BPMS6 *full* OSE application :
+            rhc create-app bpms https://raw.github.com/jboss-gpe-ose/openshift-origin-cartridge-bpms-full/master/metadata/manifest.yml -g medium
+
+    5)  Add mysql cartridge:
+            rhc cartridge add -a bpms -c mysql-5.1
+
+    6)  restart app:  rhc cartridge-restart bpms -a bpms
+        - after several minutes, should expect to see the following as the last line in $HOME/bpms/standalone/log/server.log :
+
+            [org.jboss.as.server] (DeploymentScanner-threads - 1) JBAS018559: Deployed "dashbuilder.war" (runtime-name : "dashbuilder.war")
+
+  - Verification:
+    - point you browser to:   http://<ip of OSE node>/business-central
+    - authentication credentials:    jboss / brms
+
+
+
+
+
+  

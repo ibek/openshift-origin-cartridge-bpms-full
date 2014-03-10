@@ -1,0 +1,17 @@
+# logging configs
+/subsystem=logging/periodic-rotating-file-handler=FILE/:write-attribute(name=level,value=TRACE)
+/subsystem=logging/periodic-rotating-file-handler=FILE/:write-attribute(name=append,value=false)
+
+batch
+    /system-property=org.quartz.properties/:add(value="${env.org.quartz.properties}")
+    /system-property=org.apache.cxf.stax.allowInsecureParser/:add(value="true")
+    /system-property=jbpm.audit.jms.enabled/:add(value="false")
+    /system-property=org.uberfire.nio.git.dir/:add(value="${env.OPENSHIFT_DATA_DIR}/bpmsGit")
+    /system-property=org.uberfire.nio.git.daemon.enabled/:add(value="false")
+    /system-property=org.uberfire.nio.git.daemon.host/:add(value="${env.OPENSHIFT_BPMS_IP}")
+    /system-property=org.uberfire.nio.git.ssh.host/:add(value="${env.OPENSHIFT_BPMS_IP}")
+    /system-property=org.uberfire.nio.git.ssh.enabled/:add(value="false")
+    /system-property=org.kie.demo/:add(value="false")
+    /system-property=org.kie.example/:add(value="false")
+run-batch
+

@@ -1,0 +1,31 @@
+# System Properties
+if (outcome == success) of /system-property=org.quartz.properties:read-attribute(name=value)
+    /system-property=org.quartz.properties/:remove()
+end-if
+if (outcome == success) of /system-property=org.apache.cxf.stax.allowInsecureParser:read-attribute(name=value)
+    /system-property=org.apache.cxf.stax.allowInsecureParser/:remove()
+end-if
+if (outcome == success) of /system-property=jbpm.audit.jms.enabled:read-attribute(name=value)
+    /system-property=jbpm.audit.jms.enabled/:remove()
+end-if
+if (outcome == success) of /system-property=org.uberfire.nio.git.dir:read-attribute(name=value)
+    /system-property=org.uberfire.nio.git.dir/:remove()
+end-if
+if (outcome == success) of /system-property=org.uberfire.nio.git.daemon.enabled:read-attribute(name=value)
+    /system-property=org.uberfire.nio.git.daemon.enabled/:remove()
+end-if
+if (outcome == success) of /system-property=org.uberfire.nio.git.daemon.host:read-attribute(name=value)
+    /system-property=org.uberfire.nio.git.daemon.host/:remove()
+end-if
+if (outcome == success) of /system-property=org.uberfire.nio.git.ssh.host:read-attribute(name=value)
+    /system-property=org.uberfire.nio.git.ssh.host/:remove()
+end-if
+if (outcome == success) of /system-property=org.uberfire.nio.git.ssh.enabled:read-attribute(name=value)
+    /system-property=org.uberfire.nio.git.ssh.enabled/:remove()
+end-if
+if (outcome == success) of /system-property=org.kie.demo:read-attribute(name=value)
+    /system-property=org.kie.demo/:remove()
+end-if
+if (outcome == success) of /system-property=org.kie.example:read-attribute(name=value)
+    /system-property=org.kie.example/:remove()
+end-if

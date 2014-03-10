@@ -1,0 +1,23 @@
+if (outcome == success) of /subsystem=datasources/data-source=ExampleDS:read-attribute(name=enabled)
+    /subsystem=datasources/data-source=ExampleDS/:disable()
+    /subsystem=datasources/data-source=ExampleDS/:remove()
+end-if
+if (outcome == success) of /system-property=hibernate.dialect:read-attribute(name=value)
+    /system-property=hibernate.dialect/:remove()
+end-if
+if (outcome == success) of /system-property=hibernate.hbm2ddl.auto:read-attribute(name=value)
+    /system-property=hibernate.hbm2ddl.auto/:remove()
+end-if
+
+reload
+
+batch
+    /system-property=hibernate.dialect/:add(value="org.hibernate.dialect.MySQL5InnoDBDialect")
+    /system-property=hibernate.hbm2ddl.auto/:add(value="none")
+
+    /subsystem=datasources/jdbc-driver=mysql/:add(driver-name=mysql,driver-module-name=com.mysql.jdbc,driver-xa-datasource-class-name=com.mysql.jdbc.jdbc2.optional.MysqlXADataSource,jdbc-compliant=false)
+    /subsystem=datasources/data-source=ExampleDS:add(jndi-name=java:jboss/datasources/ExampleDS,connection-url=jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/jbpm,driver-class=com.mysql.jdbc.Driver,driver-name=mysql,user-name=${env.OPENSHIFT_MYSQL_DB_USERNAME},password=${env.OPENSHIFT_MYSQL_DB_PASSWORD},pool-name=jbpm-core_ds_pool,max-pool-size=50,min-pool-size=10)
+    /subsystem=datasources/data-source=ExampleDS/:write-attribute(name=new-connection-sql,value="select 1")
+    /subsystem=datasources/data-source=ExampleDS:enable()
+run-batch
+
