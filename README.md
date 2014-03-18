@@ -57,10 +57,8 @@ INITIAL SETUP
     3)  ext_general_medium (ITOS)
     
 9.1 Create the *full* BPMS6 *full* OSE application :
-      rhc create-app bpms https://raw.github.com/jboss-gpe-ose/openshift-origin-cartridge-bpms-full/master/metadata/manifest.yml -g medium
-10. Add mysql cartridge:
-      rhc cartridge add -a bpms -c mysql-5.1
-11. execute:   rhc cartridge-restart bpms -a bpms
+      rhc create-app bpms https://raw.github.com/jboss-gpe-ose/openshift-origin-cartridge-bpms-full/master/metadata/manifest.yml mysql -g medium --no-git
+
     - after several minutes, should expect to see the following as the last line in $HOME/bpms/standalone/log/server.log :
 
             [org.jboss.as.server] (DeploymentScanner-threads - 1) JBAS018559: Deployed "dashbuilder.war" (runtime-name : "dashbuilder.war")

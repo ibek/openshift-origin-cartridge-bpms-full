@@ -22,6 +22,7 @@
         taskId bigint not null,
         taskName varchar(255),
         userId varchar(255),
+        OPTLOCK integer,
         primary key (pk)
     );
 
@@ -302,6 +303,7 @@
         taskId bigint,
         type varchar(255),
         userId varchar(255),
+        OPTLOCK integer,
         primary key (id)
     );
 
