@@ -313,6 +313,10 @@ function deploy() {
     if isdbup; then
         cp ${OPENSHIFT_BPMS_DIR}/filtered/persistence.xml $BPMS_DEPLOYMENTS_DIR/business-central.war/WEB-INF/classes/META-INF/persistence.xml
     fi
+
+    # 6.5:  jms queues are now included in standalone.xml .... will remove bpms-jms.xml 
+    rm -f $BPMS_DEPLOYMENTS_DIR/business-central.war/WEB-INF/bpms-jms.xml
+
     echo > $BPMS_DEPLOYMENTS_DIR/business-central.war.dodeploy
 
     # 7)  copy and deploy BPMS dashbuilder
@@ -450,6 +454,12 @@ function tidy() {
   client_message "Emptying log dir: $OPENSHIFT_BPMS_LOG_DIR"
   shopt -s dotglob
   rm -rf $OPENSHIFT_BPMS_LOG_DIR/*
+
+  # JA Bride : refresh bpms6 state
+  rm -rf $OPENSHIFT_DATA_DIR/maven
+  rm -rf $OPENSHIFT_DATA_DIR/bpmsGit
+  mysql -u $OPENSHIFT_MYSQL_DB_USERNAME -p jbpm -h $OPENSHIFT_MYSQL_DB_HOST -p$OPENSHIFT_MYSQL_DB_PASSWORD -e "drop database jbpm"
+
 }
 
 function threaddump() {

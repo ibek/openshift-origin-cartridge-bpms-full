@@ -14,11 +14,11 @@ Install of RPMs
         7)  rpm -e bpms    (if RPM has been previously installed )
         8)  rpm -ivh /opt/downloads/bpms-6.0.0-2.el6.x86_64.rpm
 
-    bpms_mysql RPM
+    mysql_module RPM
         9)  yum install mysql-server mysql-connector-java
-        10)  wget http://people.redhat.com/jbride/ose/bpms_mysql-6.0.0-1.el6.x86_64.rpm -P /opt/downloads
-        11)  rpm -e bpms_mysql    (if RPM has been previously installed)
-        12)  rpm -ivh /opt/downloads/bpms_mysql-6.0.0-1.el6.x86_64.rpm
+        10)  wget http://people.redhat.com/jbride/ose/mysql_module-6.0.0-1.el6.x86_64.rpm -P /opt/downloads
+        11)  rpm -e mysql_module    (if RPM has been previously installed)
+        12)  rpm -ivh /opt/downloads/mysql_module-6.0.0-1.el6.x86_64.rpm
 
     fsw RPM
         13) manually download Fuse Service Works (FSW) RPM (found at this link below) and place into /opt/downloads
