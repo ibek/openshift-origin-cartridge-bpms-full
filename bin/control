@@ -454,13 +454,15 @@ function tidy() {
   client_message "Emptying log dir: $OPENSHIFT_BPMS_LOG_DIR"
   shopt -s dotglob
   rm -rf $OPENSHIFT_BPMS_LOG_DIR/*
+}
 
+function refreshBpms() {
   # JA Bride : refresh bpms6 state
   rm -rf $OPENSHIFT_DATA_DIR/maven
   rm -rf $OPENSHIFT_DATA_DIR/bpmsGit
-  mysql -u $OPENSHIFT_MYSQL_DB_USERNAME -p jbpm -h $OPENSHIFT_MYSQL_DB_HOST -p$OPENSHIFT_MYSQL_DB_PASSWORD -e "drop database jbpm"
-
+  rm -rf $OPENSHIFT_MYSQL_DIR/data/jbpm
 }
+
 
 function threaddump() {
   echo "Thread dump for $cartridge_type cartridge"
@@ -484,12 +486,12 @@ function threaddump() {
 export OPENSHIFT_SECRET_TOKEN=${OPENSHIFT_SECRET_TOKEN:-OPENSHIFT_APP_UUID}
 
 case "$1" in
-    build|start|stop|restart|status|reload|tidy|threaddump|update-configuration)
+    build|start|stop|restart|status|reload|tidy|threaddump|update-configuration|refreshBpms)
         $1
         ;;
     *)
 
-    echo $"Usage: $0 {build|start|stop|restart|status|reload|tidy|threaddump|update-configuration}"
+    echo $"Usage: $0 {build|start|stop|restart|status|reload|tidy|threaddump|update-configuration|refreshBpms}"
     exit 1
 esac
 
