@@ -464,6 +464,7 @@ function refreshBpms() {
       echo "Timed out waiting for database listener port ... will not re-fresh jbpm database"
   else
       mysql -u $OPENSHIFT_MYSQL_DB_USERNAME -p jbpm -h $OPENSHIFT_MYSQL_DB_HOST -p$OPENSHIFT_MYSQL_DB_PASSWORD -e "drop database jbpm"
+  fi
 }
 
 
