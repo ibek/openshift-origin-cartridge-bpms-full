@@ -460,7 +460,10 @@ function refreshBpms() {
   # JA Bride : refresh bpms6 state
   rm -rf $OPENSHIFT_DATA_DIR/maven
   rm -rf $OPENSHIFT_DATA_DIR/bpmsGit
-  rm -rf $OPENSHIFT_MYSQL_DIR/data/jbpm
+  if ! isdbup; then
+      echo "Timed out waiting for database listener port ... will not re-fresh jbpm database"
+  else
+      mysql -u $OPENSHIFT_MYSQL_DB_USERNAME -p jbpm -h $OPENSHIFT_MYSQL_DB_HOST -p$OPENSHIFT_MYSQL_DB_PASSWORD -e "drop database jbpm"
 }
 
 
