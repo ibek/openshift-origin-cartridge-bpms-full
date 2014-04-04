@@ -5,27 +5,27 @@ Install of RPMs
     2)  mkdir -p /opt/downloads
 
     jboss_bpm_soa RPM
-        3)  wget http://people.redhat.com/jbride/ose/jboss_bpm_soa-6.1.1-1.el6.x86_64.rpm -P /opt/downloads
+        3)  wget http://people.redhat.com/jbride/ose/jboss_bpm_soa-6.1.1-3.el6.x86_64.rpm -P /opt/downloads
         4)  rpm -e jboss_bpm_soa    (if RPM has been previously installed )
-        5)  rpm -ivh /opt/downloads/jboss_bpm_soa-6.1.1-1.el6.x86_64.rpm
+        5)  rpm -ivh /opt/downloads/jboss_bpm_soa-6.1.1-3.el6.x86_64.rpm
 
     bpms RPM
-        6)  wget http://people.redhat.com/jbride/ose/bpms-6.0.0-2.el6.x86_64.rpm -P /opt/downloads
+        6)  wget http://people.redhat.com/jbride/ose/bpms-6.0.1-3.el6.x86_64.rpm -P /opt/downloads
         7)  rpm -e bpms    (if RPM has been previously installed )
-        8)  rpm -ivh /opt/downloads/bpms-6.0.0-2.el6.x86_64.rpm
+        8)  rpm -ivh /opt/downloads/bpms-6.0.1-3.el6.x86_64.rpm
 
     mysql_module RPM
         9)  yum install mysql-server mysql-connector-java
-        10)  wget http://people.redhat.com/jbride/ose/mysql_module-6.0.0-1.el6.x86_64.rpm -P /opt/downloads
+        10)  wget http://people.redhat.com/jbride/ose/mysql_module-6.0.0-3.el6.x86_64.rpm -P /opt/downloads
         11)  rpm -e mysql_module    (if RPM has been previously installed)
-        12)  rpm -ivh /opt/downloads/mysql_module-6.0.0-1.el6.x86_64.rpm
+        12)  rpm -ivh /opt/downloads/mysql_module-6.0.0-3.el6.x86_64.rpm
 
     fsw RPM
         13) manually download Fuse Service Works (FSW) RPM (found at this link below) and place into /opt/downloads
             - https://drive.google.com/file/d/0B6FQekq0m3C1bkJqbVZLY2d2cGc/edit?usp=sharing
             - sorry, ran out of disk space in my people.redhat.com space
         14) rpm -e fsw    (if RPM has been previously installed)
-        15) rpm -ivh /opt/downloads/fsw-6.0.0-2.el6.x86_64.rpm
+        15) rpm -ivh /opt/downloads/fsw-6.0.0-3.el6.x86_64.rpm
 
   - Verification:
     - should see the following directory having been created:  /opt/jboss_bpm_soa/jboss-eap-6.1
