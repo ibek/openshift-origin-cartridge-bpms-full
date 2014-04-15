@@ -9,6 +9,14 @@ if (outcome == success) of /system-property=hibernate.hbm2ddl.auto:read-attribut
     /system-property=hibernate.hbm2ddl.auto/:remove()
 end-if
 
+if (outcome == success) of /system-property=hibernate.dialect:read-attribute(name=value)
+    /system-property=hibernate.hbm2ddl.auto/:remove()
+end-if
+
+if (outcome == success) of /subsystem=datasources/jdbc-driver=mysql:read-attribute(name=enabled)
+    /subsystem=datasources/jdbc-driver=mysql/:remove()
+end-if
+
 reload
 
 batch
