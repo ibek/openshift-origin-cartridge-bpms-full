@@ -305,10 +305,7 @@ function deploy() {
         rsync -r --delete --exclude ".*" ${OPENSHIFT_REPO_DIR}/deployments/ $BPMS_DEPLOYMENTS_DIR
     fi
 
-    # 6) copy biz-central web app from it's original RPM'd location 
-    #    - ensure that .junit_symbolMaps is not included as it is huge and seems unnecessary
-    #    - if mysql is up, then copy over mysql configured persistence.xml to biz-central
-    rsync -av --exclude='.junit_symbolMaps' $OS_BIZ_CENTRAL_PATH $BPMS_DEPLOYMENTS_DIR/
+    # 6) - if mysql is up, then copy over mysql configured persistence.xml to biz-central
     cp $OPENSHIFT_BPMS_DIR/filtered/jboss-web.xml.bizcentral $BPMS_DEPLOYMENTS_DIR/business-central.war/WEB-INF/jboss-web.xml
     if isdbup; then
         cp ${OPENSHIFT_BPMS_DIR}/filtered/persistence.xml $BPMS_DEPLOYMENTS_DIR/business-central.war/WEB-INF/classes/META-INF/persistence.xml

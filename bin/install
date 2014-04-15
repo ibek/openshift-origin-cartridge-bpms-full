@@ -56,3 +56,7 @@ cp ${OPENSHIFT_BPMS_DIR}/versions/${version}/conf/* ${OPENSHIFT_BPMS_DIR}/filter
 sed -i -e "s@\${env.OPENSHIFT_DATA_DIR}@$OPENSHIFT_DATA_DIR@" ${OPENSHIFT_BPMS_DIR}/filtered/settings.xml
 mkdir $HOME/.m2
 cp $OPENSHIFT_BPMS_DIR/filtered/settings.xml $HOME/.m2
+
+# copy biz-central web app from it's original RPM'd location
+#    - ensure that .junit_symbolMaps is not included as it is huge and seems unnecessary
+rsync -av --exclude='.junit_symbolMaps' $OS_BIZ_CENTRAL_PATH $BPMS_DEPLOYMENTS_DIR/
