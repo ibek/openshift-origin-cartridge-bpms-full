@@ -13,7 +13,7 @@ if (outcome == success) of /system-property=hibernate.dialect:read-attribute(nam
     /system-property=hibernate.hbm2ddl.auto/:remove()
 end-if
 
-if (outcome == success) of /subsystem=datasources/jdbc-driver=mysql:read-attribute(name=enabled)
+if (outcome == success) of /subsystem=datasources/jdbc-driver=mysql:read-attribute(name=driver-name)
     /subsystem=datasources/jdbc-driver=mysql/:remove()
 end-if
 
