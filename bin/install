@@ -1,5 +1,10 @@
 #!/bin/bash -eu
 
+JBOSS_BPM_SOA_HOME=/opt/jboss_bpm_soa/jboss-eap-6.1
+OS_BIZ_CENTRAL_PATH=$JBOSS_BPM_SOA_HOME/standalone/deployments/business-central.war
+OS_DASHBUILDER_PATH=$JBOSS_BPM_SOA_HOME/standalone/deployments/dashbuilder.war
+
+
 source $OPENSHIFT_BPMS_DIR/bin/util
 
 case "$1" in
@@ -60,3 +65,6 @@ cp $OPENSHIFT_BPMS_DIR/filtered/settings.xml $HOME/.m2
 # copy biz-central web app from it's original RPM'd location
 #    - ensure that .junit_symbolMaps is not included as it is huge and seems unnecessary
 rsync -av --exclude='.junit_symbolMaps' $OS_BIZ_CENTRAL_PATH $BPMS_DEPLOYMENTS_DIR/
+
+# copy dashbuilder to deployments dir
+cp -r $OS_DASHBUILDER_PATH $BPMS_DEPLOYMENTS_DIR

@@ -9,9 +9,6 @@ SCANCONFIG=""
 
 # JA Bride
 originalCartDeployDir=$OPENSHIFT_BPMS_DIR/versions/6.0/deployments
-JBOSS_BPM_SOA_HOME=/opt/jboss_bpm_soa/jboss-eap-6.1
-OS_BIZ_CENTRAL_PATH=$JBOSS_BPM_SOA_HOME/standalone/deployments/business-central.war
-OS_DASHBUILDER_PATH=$JBOSS_BPM_SOA_HOME/standalone/deployments/dashbuilder.war
 
 source $BPMS_BIN_DIR/util
 
@@ -316,8 +313,7 @@ function deploy() {
 
     echo > $BPMS_DEPLOYMENTS_DIR/business-central.war.dodeploy
 
-    # 7)  copy and deploy BPMS dashbuilder
-    cp -r $OS_DASHBUILDER_PATH $BPMS_DEPLOYMENTS_DIR
+    # 7)  deploy BPMS dashbuilder
     cp $OPENSHIFT_BPMS_DIR/filtered/jboss-web.xml.dashbuilder $BPMS_DEPLOYMENTS_DIR/dashbuilder.war/WEB-INF/jboss-web.xml
     echo > $BPMS_DEPLOYMENTS_DIR/dashbuilder.war.dodeploy
 }
