@@ -3,6 +3,7 @@
 JBOSS_BPM_SOA_HOME=/opt/jboss_bpm_soa/jboss-eap-6.1
 OS_BIZ_CENTRAL_PATH=$JBOSS_BPM_SOA_HOME/standalone/deployments/business-central.war
 OS_DASHBUILDER_PATH=$JBOSS_BPM_SOA_HOME/standalone/deployments/dashbuilder.war
+BPMS_DEPLOYMENTS_DIR=${OPENSHIFT_BPMS_DIR}/standalone/deployments
 
 
 source $OPENSHIFT_BPMS_DIR/bin/util
