@@ -57,7 +57,7 @@ INITIAL SETUP
     3)  ext_general_medium (ITOS)
     
 9.1 Create the *full* BPMS6 *full* OSE application :
-      rhc app create bpms https://raw.github.com/jboss-gpe-ose/openshift-origin-cartridge-bpms-full/master/metadata/manifest.yml mysql -g medium --no-git --noprompt
+      rhc app create bpms https://raw.github.com/jboss-gpe-ose/openshift-origin-cartridge-bpms-full/master/metadata/manifest.yml mysql -g bpms_medium --no-git --noprompt
 
     - after several minutes, should expect to see the following as the last line in $HOME/bpms/standalone/log/server.log :
 
