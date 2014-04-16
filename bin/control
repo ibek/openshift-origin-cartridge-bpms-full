@@ -289,10 +289,6 @@ function deploy() {
             mysql -u $OPENSHIFT_MYSQL_DB_USERNAME -p jbpm -h $OPENSHIFT_MYSQL_DB_HOST -p$OPENSHIFT_MYSQL_DB_PASSWORD < $OPENSHIFT_BPMS_DIR/filtered/mysql5-jbpm-schema.sql
             mysql -u $OPENSHIFT_MYSQL_DB_USERNAME -p jbpm -h $OPENSHIFT_MYSQL_DB_HOST -p$OPENSHIFT_MYSQL_DB_PASSWORD < $OPENSHIFT_BPMS_DIR/filtered/quartz_tables_mysql.sql
         fi
-
-        # 4)  execute mysql related modifications to jboss
-        replace_mysql_envs
-        $OPENSHIFT_BPMS_DIR/bin/tools/jboss-cli.sh --connect --controller=$OPENSHIFT_BPMS_IP:$OPENSHIFT_BPMS_MANAGEMENT_NATIVE_PORT -c --file=$OPENSHIFT_BPMS_DIR/filtered/mysql-add.cli
     fi
 
     # if repo/deployments has any files in it, sync them to $BPMS_DEPLOYMENTS_DIR
