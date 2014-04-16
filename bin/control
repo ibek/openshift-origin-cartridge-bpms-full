@@ -402,10 +402,6 @@ function start() {
 
 function stop() {
 
-    # 1)  start by undeploying any bpms webs and related configs
-    rm -rf $BPMS_DEPLOYMENTS_DIR/bpmsCartWelcome*.war*
-    rm -rf $BPMS_DEPLOYMENTS_DIR/dashbuilder*.war*
-    rm -rf $BPMS_DEPLOYMENTS_DIR/business-central*.war*
    if isrunning
    then
       client_result "Application is running"
