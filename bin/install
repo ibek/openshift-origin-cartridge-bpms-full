@@ -69,3 +69,7 @@ rsync -av --exclude='.junit_symbolMaps' $OS_BIZ_CENTRAL_PATH $BPMS_DEPLOYMENTS_D
 
 # copy dashbuilder to deployments dir
 cp -r $OS_DASHBUILDER_PATH $BPMS_DEPLOYMENTS_DIR
+
+# JA Bride
+# create an application specific JBoss modules path
+mkdir -p $OPENSHIFT_DATA_DIR/appModules
