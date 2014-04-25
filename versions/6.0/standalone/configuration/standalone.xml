@@ -305,6 +305,7 @@
                 <journal-file-size>102400</journal-file-size>
                 <journal-min-files>2</journal-min-files>
                 <jmx-management-enabled>true</jmx-management-enabled>
+                <message-counter-enabled>true</message-counter-enabled>
                 
                 <thread-pool-max-size>${messaging.thread.pool.max.size}</thread-pool-max-size>
                  <scheduled-thread-pool-max-size>${messaging.scheduled.thread.pool.max.size}</scheduled-thread-pool-max-size>
