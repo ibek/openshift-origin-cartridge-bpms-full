@@ -332,7 +332,6 @@ function replace_global_envs() {
     for f in ${OPENSHIFT_BPMS_DIR}/filtered/*.*
     do
         sed -i -e "s/\${env.OPENSHIFT_BPMS_IP}/$OPENSHIFT_BPMS_IP/g" $f
-        sed -i -e "s@\${env.org.quartz.properties}@$OPENSHIFT_DATA_DIR/quartz-ram.properties@g" $f
         sed -i -e "s@\${env.deployDir}@$OPENSHIFT_BPMS_DIR/versions/$version/deployments@" $f
         sed -i -e "s@\${env.kieDir}@$OPENSHIFT_DATA_DIR/kieFilesystem@" $f
         sed -i -e "s@\${env.kie.exec.server.rest.base.url}@$kieExecServerRestBaseUrl@g" $f

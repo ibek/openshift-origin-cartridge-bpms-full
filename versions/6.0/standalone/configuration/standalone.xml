@@ -53,7 +53,7 @@
        <property name="org.kie.demo" value="false"/>
        <property name="org.kie.example" value="false"/>
 
-       <property name="org.quartz.properties" value="${env.org.quartz.properties}"/>
+       <property name="org.quartz.properties" value="${env.OPENSHIFT_DATA_DIR}/quartz-ram.properties"/>
        <property name="org.apache.cxf.stax.allowInsecureParser" value="true"/>
        <property name="jbpm.audit.jms.enabled" value="false"/>
         
