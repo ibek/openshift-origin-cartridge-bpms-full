@@ -401,7 +401,6 @@ function stop() {
    if isrunning
    then
       client_result "Application is running"
-      $OPENSHIFT_BPMS_DIR/bin/tools/jboss-cli.sh --connect --controller=$OPENSHIFT_BPMS_IP:$OPENSHIFT_BPMS_MANAGEMENT_NATIVE_PORT -c --file=$OPENSHIFT_BPMS_DIR/filtered/bpmsfull-project-remove.cli
    else
       client_result "Application is either stopped or inaccessible"
    fi

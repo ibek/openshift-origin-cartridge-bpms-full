@@ -43,6 +43,20 @@
        <property name="org.jbpm.designer.perspective" value="${org.jbpm.designer.perspective:full}"/>
        <property name="designerdataobjects" value="${designerdataobjects:false}"/>
 
+       <property name="org.uberfire.nio.git.dir" value="${env.OPENSHIFT_DATA_DIR}/bpmsGit"/>
+       <property name="org.uberfire.nio.git.daemon.host" value="${env.OPENSHIFT_BPMS_IP}"/>
+       <property name="org.uberfire.nio.git.daemon.enabled" value="true"/>
+
+       <property name="org.uberfire.nio.git.ssh.host" value="${env.OPENSHIFT_BPMS_IP}"/>
+       <property name="org.uberfire.nio.git.ssh.enabled" value="true"/>
+
+       <property name="org.kie.demo" value="false"/>
+       <property name="org.kie.example" value="false"/>
+
+       <property name="org.quartz.properties" value="${env.org.quartz.properties}"/>
+       <property name="org.apache.cxf.stax.allowInsecureParser" value="true"/>
+       <property name="jbpm.audit.jms.enabled" value="false"/>
+        
     </system-properties>
 
     <!-- JA Bride -->

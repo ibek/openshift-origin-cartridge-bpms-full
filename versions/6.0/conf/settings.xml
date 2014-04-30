@@ -4,6 +4,19 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
 
+  <!-- Does biz-central need correct maven settings ?
+       The following problem still occurs when a BPM Suite 6.0.1 project pom.xml has dependencies on supported drools libraries (ie: org.drools:drools-compiler:6.0.2.-redhat-6 ):
+
+    ERROR [stderr] (http-127.9.130.129/127.9.130.129:8080-1) Caused by: org.sonatype.aether.transfer.ArtifactTransferException: Failure to transfer org.drools:drools-compiler:pom:6.0.2-redhat-6 from http://bpmsjb-bpmstraining.apps.lab2.opentlc.com/business-central/maven2/ was cached in the local repository, resolution will not be reattempted until the update interval of guvnor-m2-repo has elapsed or updates are forced. Original error: Could not transfer artifact org.drools:drools-compiler:pom:6.0.2-redhat-6 from/to guvnor-m2-repo (http://bpmsjb-bpmstraining.apps.lab2.opentlc.com/business-central/maven2/): Not authorized, ReasonPhrase:Unauthorized.
+    ERROR [stderr] (http-127.9.130.129/127.9.130.129:8080-1)    at org.sonatype.aether.impl.internal.DefaultUpdateCheckManager.newException(DefaultUpdateCheckManager.java:237)
+    ERROR [stderr] (http-127.9.130.129/127.9.130.129:8080-1)    at org.sonatype.aether.impl.internal.DefaultUpdateCheckManager.checkArtifact(DefaultUpdateCheckManager.java:216)
+    ERROR [stderr] (http-127.9.130.129/127.9.130.129:8080-1)    at org.sonatype.aether.impl.internal.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:427)
+    ERROR [stderr] (http-127.9.130.129/127.9.130.129:8080-1)    ... 69 more
+
+        will subsequently configure for offline EAP6.1.1 and BPMS6.0.1 off-line repositories
+
+  -->
+
   <!-- For those libraries not already in an offline repo defined below
        download into this directory  -->
   <localRepository>${env.OPENSHIFT_DATA_DIR}/maven</localRepository>
@@ -17,7 +30,7 @@
               <repository>
                   <id>bpms-repository</id>
 
-                  <url>file:///opt/jboss_bpm_soa/brms-6.0.0-redhat-7-maven-repository</url>
+                  <url>file:///opt/jboss_bpm_soa/maven/bpms-brms-6.0.1.GA-redhat-4-maven-repository/maven-repository</url>
 
                   <releases>
                       <enabled>true</enabled>
@@ -31,7 +44,7 @@
               <pluginRepository>
                   <id>bpms-repository</id>
 
-                  <url>file:///opt/jboss_bpm_soa/brms-6.0.0-redhat-7-maven-repository</url>
+                  <url>file:///opt/jboss_bpm_soa/maven/bpms-brms-6.0.1.GA-redhat-4-maven-repository/maven-repository</url>
 
                   <releases>
                       <enabled>true</enabled>
@@ -52,7 +65,7 @@
                   <id>redhat-techpreview-all-repository</id>
                   <name>Red Hat Tech Preview repository (all)</name>
 
-                  <url>file:///opt/jboss_bpm_soa/jboss-eap-6.1.1.GA-maven-repository</url>
+                  <url>file:///opt/jboss_bpm_soa/maven/jboss-eap-6.1.1.GA-maven-repository</url>
 
                   <layout>default</layout>
                   <releases>
@@ -70,7 +83,7 @@
                   <id>redhat-techpreview-all-repository</id>
                   <name>Red Hat Tech Preview repository (all)</name>
 
-                  <url>file:///opt/jboss_bpm_soa/jboss-eap-6.1.1.GA-maven-repository</url>
+                  <url>file:///opt/jboss_bpm_soa/maven/jboss-eap-6.1.1.GA-maven-repository</url>
 
                   <layout>default</layout>
                   <releases>
@@ -88,9 +101,8 @@
   </profiles>
 
   <activeProfiles>
-      <!-- Neither of these are needed by the BPMS6 process engine at runtime
       <activeProfile>bpms-repository</activeProfile>
-      <activeProfile>redhat-techpreview-all-repository</activeProfile -->
+      <activeProfile>redhat-techpreview-all-repository</activeProfile>
   </activeProfiles>
 
 </settings>
