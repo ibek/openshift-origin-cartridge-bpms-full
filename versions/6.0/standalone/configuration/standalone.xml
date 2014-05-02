@@ -91,17 +91,16 @@
 
     <profile>
         <subsystem xmlns="urn:jboss:domain:logging:1.1">
-            <!--console-handler name="CONSOLE"> <level name="INFO"/> <formatter> <pattern-formatter 
-                pattern="%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n"/> </formatter> </console-handler -->
-            <periodic-rotating-file-handler name="FILE">
+            <size-rotating-file-handler name="SIZE-FILE">
+                <level name="INFO"/>
                 <formatter>
-                    <pattern-formatter
-                        pattern="%d{yyyy/MM/dd HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n" />
+                    <pattern-formatter pattern="%d%-5p(%t)%s%E%n"/>
                 </formatter>
-                <file relative-to="jboss.server.log.dir" path="server.log" />
-                <suffix value=".yyyy-MM-dd" />
-                <append value="true" />
-            </periodic-rotating-file-handler>
+                <file relative-to="jboss.server.log.dir" path="server.log"/>
+                <rotate-size value="50m"/>
+                <max-backup-index value="2"/>
+                <append value="false"/>
+            </size-rotating-file-handler>
             <logger category="com.arjuna">
                 <level name="WARN" />
             </logger>
@@ -120,8 +119,7 @@
             <root-logger>
                 <level name="INFO" />
                 <handlers>
-                    <!--handler name="CONSOLE"/ -->
-                    <handler name="FILE" />
+                    <handler name="SIZE-FILE" />
                 </handlers>
             </root-logger>
         </subsystem>
