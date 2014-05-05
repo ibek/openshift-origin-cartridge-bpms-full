@@ -1,3 +1,0 @@
-# logging configs
-/subsystem=logging/periodic-rotating-file-handler=FILE/:write-attribute(name=level,value=TRACE)
-/subsystem=logging/periodic-rotating-file-handler=FILE/:write-attribute(name=append,value=false)

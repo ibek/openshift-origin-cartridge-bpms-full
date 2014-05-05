@@ -270,9 +270,6 @@ function deploy() {
     # 1)  copy configuration files to "filtered" location
     replace_global_envs
 
-    # 2)  execute bpms related modifications to jboss
-        $OPENSHIFT_BPMS_DIR/bin/tools/jboss-cli.sh --connect --controller=$OPENSHIFT_BPMS_IP:$OPENSHIFT_BPMS_MANAGEMENT_NATIVE_PORT -c --file=$OPENSHIFT_BPMS_DIR/filtered/bpmsfull-project-add.cli
-
     #JA Bride
     # no point in attempting mysql related configurs for bpms web archives if database is not up
     if ! isdbup; then
