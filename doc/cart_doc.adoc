@@ -21,6 +21,10 @@ So, for instance, this cartridge will not work on any service plan offered by Op
 The benefit of this approach is that these bits do not need to be bundled in the downloadable cartridge itself. 
 Subsequently, creating a new BPMS6 application in Openshift Enterprise can occur quickly.  
 Quick provisioning of BPMS6 environments may prove valuable in scenarios where you may need many instances of BPMS6.
+. This cartridge does not rely on the JBoss EAP available through the jbappplatform channel of the Red Hat Network.  
+The release cycle of JBoss EAP from that channel is not in sync with releases of BPM Suite 6  
+ie:  to-date, the version of EAP available from the jbappplatform channel is 6.2.  
+BPM Suite 6 has a hard-requirement on EAP 6.1.1 specifically.
 . Red Hat has other active initiatives to create a supported BPMS6 cartridge.  
 Please contact your Red Hat sales representative for more details regarding these supported options.
 . This cartridge assumes co-installation of the mysql Openshift cartridge.  
