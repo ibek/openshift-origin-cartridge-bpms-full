@@ -35,7 +35,7 @@ Subsequently, BPMS6 is configured to leverage the jbpm database of mysql rather
 It's highly recommended that a district be created in your Openshift Enterprise environment so that gears can be freely moved from one node to another.
 . {rhctools} installed in your local environment
 
-[Note]
+[NOTE]
 Red Hat's _Partner Demonstration System_ provides Red Hat partners with freely available Openshift Enterprise environment that already meet the first two pre-requisites.
 If you are a Red Hat Partner, please visit {partnercenter} for more details. 
 
@@ -51,7 +51,7 @@ Execute the following at the command-line of your local environment:
 rhc create-app bpms_test https://raw.github.com/jboss-gpe-ose/openshift-origin-cartridge-bpms-full/master/metadata/manifest.yml mysql -g mediumplus --no-git --noprompt
 -----
 
-[Note]
+[NOTE]
 when executed, this command creates a gear using the previously defined size of ext_general_medium containing both the bpms6 and mysql cartridges.  
 In addition, it does not attempt to clone the new gear's git repository to a local environment nor does it prompt you for anything else such as upload of ssh keys.
 
@@ -70,7 +70,9 @@ https://raw.github.com/jboss-gpe-ose/openshift-origin-cartridge-bpms-full/master
 image::images/codeanything.png[]
 
 . Provide the application a name by adding a value in the:  Public URL text box.
-. Select the gear type as provided by your Openshift Enterprise environment.  NOTE:  should be at minimum a medium sized gear
+. Select the gear type as provided by your Openshift Enterprise environment.  
+
+[NOTE]  should be at minimum a medium sized gear
 
 image::images/createapp.png[]
 
@@ -80,7 +82,7 @@ image::images/createapp.png[]
 
 image::images/addcart.png[]
 
-== Login to BPM Central
+=== Login to BPM Central
 Using the gear info provided by Openshift, you should now be able to point your browser to the following URL to access the BPM Central web application:
 
 http://<openshift_server_address>/business-central
@@ -101,7 +103,7 @@ MySQL was selected because in a 'scaled' openshift app, a single mysql database 
 Ultimately what's envisioned is a 'BPMS Process Engine' cartridge that would allow for scalable small-gear bpms6 process engine apps that share a single mysql database.
 A "BPMS Process Engine" cartridge has not been completed yet but work is in progress.
 
-[Note]
+[NOTE]
 A future version of this cartridge will allow for selection of various supported RDBMSs rather than being hard-coded to use mysql.
 
 === Run-time Footpint:
