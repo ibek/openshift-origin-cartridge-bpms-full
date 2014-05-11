@@ -1,4 +1,6 @@
 :cartdoc: link:doc/cart_doc.adoc[cartridge documentation]
+:cartdeploy: link:https://raw.github.com/jboss-gpe-ose/openshift-origin-cartridge-bpms-full/master/doc/images/bpmPaaS-standalone-deployment-architecture.png[here]
+:flexcart: link:https://raw.github.com/jbride/openshift-origin-cartridge-bpms-base/master/doc/bpmPaaS_Overview/images/bpms6-deployment-architecture-openshift.png[this diagram]
 
 bpmPaaS Cartridge using BPMS6
 ==============================
@@ -6,9 +8,9 @@ bpmPaaS Cartridge using BPMS6
 == Overview
 
 * Provides an Openshift Enterprise (OSE) cartridge with full suite of Red Hat BPMS6 functionality.  
-* A view of the deployment architecture of a gear using this cartridge can be found [here.](https://raw.github.com/jboss-gpe-ose/openshift-origin-cartridge-bpms-full/master/doc/images/bpmPaaS-standalone-deployment-architecture.png)
+* A view of the deployment architecture of a gear using this cartridge can be found {cartdeploy}
 * NOTE: this cartridge differs from the series of OSE *base* and *add-on* BPMS 6 cartridges.
-  Those cartridges allow for more flexible bpmPaaS deployment architectures as per [this diagram.](https://raw.github.com/jbride/openshift-origin-cartridge-bpms-base/master/doc/bpmPaaS_Overview/images/bpms6-deployment-architecture-openshift.png)
+  Those cartridges allow for more flexible bpmPaaS deployment architectures as per {flexcart}
 * This cartridge is essentially a fork of the OSE jbosseap cartridge.
   Subsequently, most of administration guidelines documented in the jbosseap cartridge apply to this cartridge.
 
