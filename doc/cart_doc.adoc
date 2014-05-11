@@ -35,7 +35,7 @@ Subsequently, BPMS6 is configured to leverage the jbpm database of mysql rather
 It's highly recommended that a district be created in your Openshift Enterprise environment so that gears can be freely moved from one node to another.
 . {rhctools} installed in your local environment
 
-image::images/icons/note.png[]
+[IMPORTANT]
 Red Hat's _Partner Demonstration System_ provides Red Hat partners with freely available Openshift Enterprise environment that already meet the first two pre-requisites.
 If you are a Red Hat Partner, please visit {partnercenter} for more details. 
 
