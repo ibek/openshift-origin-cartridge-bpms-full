@@ -3,7 +3,7 @@
 :flexcart: link:https://raw.github.com/jbride/openshift-origin-cartridge-bpms-base/master/doc/bpmPaaS_Overview/images/bpms6-deployment-architecture-openshift.png[this diagram]
 
 bpmPaaS Cartridge using BPM Suite 6
-==============================
+====================================
 
 == Overview
 
