@@ -72,7 +72,8 @@ image::images/codeanything.png[]
 . Provide the application a name by adding a value in the:  Public URL text box.
 . Select the gear type as provided by your Openshift Enterprise environment.  
 
-[NOTE]  should be at minimum a medium sized gear
+[NOTE]
+should be at minimum a medium sized gear
 
 image::images/createapp.png[]
 
