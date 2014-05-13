@@ -87,6 +87,11 @@ image::images/createapp.png[]
 
 image::images/addcart.png[]
 
+. bounce the gear
+.. ssh into your gear 
+.. execute:  ctl_app stop
+.. execute:  ctl_app start
+
 === Login to BPM Central
 Using the gear info provided by Openshift, you should now be able to point your browser to the following URL to access the BPM Central web application:
 
