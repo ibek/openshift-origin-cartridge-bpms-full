@@ -87,6 +87,7 @@ image::images/createapp.png[]
 
 image::images/addcart.png[]
 
+[start=4]
 . bounce the gear
 .. ssh into your gear 
 .. execute:  ctl_app stop
