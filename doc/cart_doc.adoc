@@ -52,7 +52,7 @@ You have the following two options:
 Execute the following at the command-line of your local environment:
 
 -----
-rhc create-app bpms_test https://raw.github.com/jboss-gpe-ose/openshift-origin-cartridge-bpms-full/master/metadata/manifest.yml mysql -g mediumplus --no-git --noprompt
+rhc app create bpms_test https://raw.github.com/jboss-gpe-ose/openshift-origin-cartridge-bpms-full/master/metadata/manifest.yml mysql -g mediumplus --no-git --noprompt
 -----
 
 [NOTE]
