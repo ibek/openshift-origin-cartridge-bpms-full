@@ -440,6 +440,8 @@ function refreshBpms() {
   # JA Bride : refresh bpms6 state
   rm -rf $OPENSHIFT_DATA_DIR/maven
   rm -rf $OPENSHIFT_DATA_DIR/bpmsGit
+  rm -rf $OPENSHIFT_DATA_DIR/bpmsLucene
+  rm -rf $OPENSHIFT_DATA_DIR/bpmsArtifactRepo
   if ! isdbup; then
       echo "Timed out waiting for database listener port ... will not re-fresh jbpm database"
   else
