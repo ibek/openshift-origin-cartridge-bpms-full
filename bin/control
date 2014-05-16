@@ -276,7 +276,7 @@ function deploy() {
         echo "Timed out waiting for database listener port ... will use H2"
     else
         if [ -e $OPENSHIFT_MYSQL_DIR/data/jbpm/ProcessInstanceInfo.frm ] ; then
-            echo "jbpm database already exists"
+            echo "jbpm tables already exists"
         else
             #     NOTE:  not sure why can't connect to mysql host while in this start block without having to specify host details
             mysql -u $OPENSHIFT_MYSQL_DB_USERNAME -p mysql -h $OPENSHIFT_MYSQL_DB_HOST -p$OPENSHIFT_MYSQL_DB_PASSWORD < $OPENSHIFT_BPMS_DIR/filtered/bpmsfull.sql
