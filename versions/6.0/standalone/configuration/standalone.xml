@@ -132,19 +132,19 @@
             <datasources>
                 <drivers>
                     <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true">
-                    <connection-url>jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:3306/jbpm</connection-url>
-                    <driver-class>com.mysql.jdbc.Driver</driver-class>
-                    <driver>mysql</driver>
-                    <new-connection-sql>select 1</new-connection-sql>
-                    <pool>
-                        <min-pool-size>1</min-pool-size>
-                        <max-pool-size>5</max-pool-size>
-                    </pool>
-                    <security>
-                        <user-name>${env.OPENSHIFT_MYSQL_DB_USERNAME}</user-name>
-                        <password>${env.OPENSHIFT_MYSQL_DB_PASSWORD}</password>
-                    </security>
-                </datasource>
+                        <connection-url>jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:3306/jbpm</connection-url>
+                        <driver-class>com.mysql.jdbc.Driver</driver-class>
+                        <driver>mysql</driver>
+                        <new-connection-sql>select 1</new-connection-sql>
+                        <pool>
+                            <min-pool-size>1</min-pool-size>
+                            <max-pool-size>5</max-pool-size>
+                        </pool>
+                        <security>
+                            <user-name>${env.OPENSHIFT_MYSQL_DB_USERNAME}</user-name>
+                            <password>${env.OPENSHIFT_MYSQL_DB_PASSWORD}</password>
+                        </security>
+                    </datasource>
 
                     <driver name="mysql" module="com.mysql.jdbc">
                         <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
