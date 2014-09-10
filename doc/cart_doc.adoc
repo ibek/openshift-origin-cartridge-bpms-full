@@ -15,7 +15,7 @@ image::images/rhheader.png[width=900]
 == Summary:
 
 . This project provides a community developed Openshift Enterprise 2.0 cartridge for BPM Suite 6.
-This  _downloadable_ cartridge will only work in on-premise Openshift Enterprise environments where a few custom, non-Red Hat-supported "ghetto" RPMs can be installed.  
+This  _downloadable_ cartridge will only work in on-premise Openshift Enterprise environments where a few custom, non-Red Hat-supported community RPMs can be installed.  
 So, for instance, this cartridge will not work on any service plan offered by Openshift Online.
 . The purpose of these custom, non-supported RPMs that this BPMS6 cartridge depends on is to pre-install JBoss EAP6.1.1 and BPMS6.0.0.GA on each Openshift node.  
 The benefit of this approach is that these bits do not need to be bundled in the downloadable cartridge itself. 
