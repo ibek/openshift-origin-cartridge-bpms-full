@@ -1,0 +1,7 @@
+
+# Once the developer git repository (located at ${OPENSHIFT_REPO_DIR}) is initialized, add symlinks of the configuration the files in developer repository to <EAP_HOME>/standalone/configuration
+rm -f "${OPENSHIFT_BPMS_DIR}/standalone/configuration/${OPENSHIFT_BPMS_USERS_FILE}"
+rm -f "${OPENSHIFT_BPMS_DIR}/standalone/configuration/${OPENSHIFT_BPMS_ROLES_FILE}"
+ln -s "${OPENSHIFT_REPO_DIR}/${OPENSHIFT_BPMS_CONFIG_PATH}/${OPENSHIFT_BPMS_USERS_FILE}" "${OPENSHIFT_BPMS_DIR}/standalone/configuration/${OPENSHIFT_BPMS_USERS_FILE}"
+ln -s "${OPENSHIFT_REPO_DIR}/${OPENSHIFT_BPMS_CONFIG_PATH}/${OPENSHIFT_BPMS_ROLES_FILE}" "${OPENSHIFT_BPMS_DIR}/standalone/configuration/${OPENSHIFT_BPMS_ROLES_FILE}"
+

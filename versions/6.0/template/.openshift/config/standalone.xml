@@ -74,10 +74,10 @@
                 <security-realm name="ApplicationRealm">
                     <authentication>
                         <local default-user="$local" allowed-users="*"/>
-                        <properties path="application-users.properties" relative-to="eapConfigDir"/>
+                        <properties path="${env.OPENSHIFT_BPMS_USERS_FILE}" relative-to="jboss.server.config.dir"/>
                     </authentication>
                     <authorization>
-                        <properties path="application-roles.properties" relative-to="eapConfigDir" />
+                        <properties path="${env.OPENSHIFT_BPMS_ROLES_FILE}" relative-to="jboss.server.config.dir"/>
                     </authorization>
                 </security-realm>
             </security-realms>
@@ -132,7 +132,7 @@
             <datasources>
                 <drivers>
                     <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true">
-                        <connection-url>jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:3306/jbpm</connection-url>
+                        <connection-url>jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:3306/bpms</connection-url>
                         <driver-class>com.mysql.jdbc.Driver</driver-class>
                         <driver>mysql</driver>
                         <new-connection-sql>select 1</new-connection-sql>

@@ -57,7 +57,6 @@ cp ${OPENSHIFT_BPMS_DIR}/versions/${version}/conf/quartz-ram.properties ${OPENSH
 mkdir -p ${OPENSHIFT_BPMS_DIR}/filtered
 cp ${OPENSHIFT_BPMS_DIR}/versions/${version}/conf/* ${OPENSHIFT_BPMS_DIR}/filtered
 
-
 # copy custom maven settings.xml to user's $HOME directory
 sed -i -e "s@\${env.OPENSHIFT_DATA_DIR}@$OPENSHIFT_DATA_DIR@" ${OPENSHIFT_BPMS_DIR}/filtered/settings.xml
 mkdir $HOME/.m2

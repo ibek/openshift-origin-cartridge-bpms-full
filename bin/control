@@ -377,6 +377,10 @@ function start() {
   else
     echo "Starting $cartridge_type cartridge"
 
+    # Copy the standalone.xml configuration file from cartridge git repository.
+    rm -f ${OPENSHIFT_BPMS_DIR}/standalone/configuration/standalone.xml
+    cp -f ${OPENSHIFT_REPO_DIR}/${OPENSHIFT_BPMS_CONFIG_PATH}/standalone.xml ${OPENSHIFT_BPMS_DIR}/standalone/configuration/standalone.xml
+
     ${BPMS_BIN_DIR}/standalone.sh > ${OPENSHIFT_TMP_DIR}/${cartridge_type}.log 2>&1 &
     PROCESS_ID=$!
     echo "$PROCESS_ID" > ${BPMS_PID_FILE}
