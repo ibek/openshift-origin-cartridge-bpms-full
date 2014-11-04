@@ -135,4 +135,4 @@ Endpoints:
 
 Additional-Control-Actions:
     - threaddump
-Source-Url: https://github.com/ibek/openshift-origin-cartridge-bpms-full.git
+Source-Url: https://github.com/ibek/openshift-origin-cartridge-bpms-full/archive/master.zip
