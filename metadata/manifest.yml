@@ -35,15 +35,6 @@ Cart-Data:
   - Key: OPENSHIFT_BPMS_IP
     Type: environment
     Description: "Internal IP to which the web-framework binds to."
-  - Key: OPENSHIFT_BPMS_CONFIG_PATH
-    Type: environment
-    Description: "Config directory in the GIT repository."
-  - Key: OPENSHIFT_BPMS_USERS_FILE
-    Type: environment
-    Description: "BPMS configuration file for users."
-  - Key: OPENSHIFT_BPMS_ROLES_FILE
-    Type: environment
-    Description: "BPMS configuration file for roles."
   - Key: OPENSHIFT_APP_DNS
     Type: environment
     Description: "Fully qualified domain name for the application."
